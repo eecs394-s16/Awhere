@@ -1,0 +1,14 @@
+<ion-view view-title="Events">
+  <ion-content>
+      <div class="card" ng-repeat="event in events" >
+        <div class="item item-divider">
+          {{event.title}}
+        </div>
+        <div class="item item-text-wrap">
+          <p>Price: {{event.price}}</p>
+          <p>Time: {{event.date}} {{event.time}}</p>
+          <p>Location: {{event.location}}</p>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
