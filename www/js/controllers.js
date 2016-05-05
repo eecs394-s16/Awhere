@@ -158,3 +158,10 @@ angular.module('awhere.controllers', [])
     }
   ];
 })
+
+.controller('CategoriesCtrl', function($scope) {
+  $scope.categories = [
+    "test1",
+    "test2"
+  ];
+});
