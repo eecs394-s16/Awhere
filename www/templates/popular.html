@@ -1,5 +1,11 @@
 <ion-view view-title="Events">
-  <ion-content>
+  <ion-header-bar>
+    <div class="button-bar custom-width-bar">
+      <a class="button button-small button-positive button-outline" href="#/app/categories">Catagories</a>
+      <a class="button button-small button-positive" href="#/app/popular">Popular</a>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-subheader">
       <div class="card" ng-repeat="event in events" >
         <div class="item item-divider">
           {{event.title}}

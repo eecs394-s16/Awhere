@@ -20,7 +20,7 @@ angular.module('awhere.controllers', [])
       "location": "Ford Design Studio 1.230",
       "time": "4-5 pm",
       "brief description": "how can thinking wrong be so right?",
-      "primary category": "deisgn",
+      "primary category": "design",
       "secondary category": "entrepreneurship",
       "3rd category": ""
     },
@@ -158,3 +158,12 @@ angular.module('awhere.controllers', [])
     }
   ];
 })
+
+.controller('CategoriesCtrl', function($scope) {
+  $scope.categories = [
+    "design", "entrepreneurship", "comp. sci.", "religion", "education", "athletics", "fitness", "business", "music", "life science", "writing"
+  ];
+})
+
+.controller('CategoryCtrl', function($scope) {
+});
