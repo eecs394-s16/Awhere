@@ -33,10 +33,10 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
   })
 
   .state('app.events', {
-    url: '/popular',
+    url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/popular.html',
+        templateUrl: 'templates/events.html',
         controller: 'EventsCtrl'
       }
     }
@@ -56,12 +56,12 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
     url: '/categories/:category',
     views: {
       'menuContent': {
-        templateUrl: 'templates/category.html',
-        controller: 'CategoryCtrl'
+        templateUrl: 'templates/events.html',
+        controller: 'EventsCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/popular');
+  $urlRouterProvider.otherwise('/app/events');
 });

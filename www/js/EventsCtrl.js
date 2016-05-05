@@ -1,7 +1,9 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope) {
-  $scope.events = [
+.controller('EventsCtrl', function($scope, $stateParams) {
+
+  $scope.$on('$ionicView.enter', function(err) {
+    $scope.events = [
     {
       "title": "Segal Seminar Series: John Bielenberg",
       "date": "4/12/2016",
@@ -146,4 +148,26 @@ angular.module('awhere.controllers')
       "3rd category": ""
     }
   ];
+    $scope.filter = $stateParams.category;
+    $scope.events = $scope.events.filter(function(e) {
+      if (!$scope.filter) {
+        return true;
+      }
+      else {
+        if ($scope.filter === e["primary category"]) {
+          return true;
+        }
+        else if ($scope.filter === e["secondary category"]) {
+          return true;
+        }
+        else if ($scope.filter === e["3rd category"]) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    });
+  });
+
 });
