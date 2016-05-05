@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+.button-bar.custom-width-bar .button {
+  width: 25%;
+  max-width:25%;
+}
+
+.button-bar.custom-width-bar {
+  padding-left: 33%;
+  padding-top: 10px;
+}
