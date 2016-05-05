@@ -4,4 +4,4 @@ angular.module('awhere.controllers')
   $scope.categories = [
     "design", "entrepreneurship", "comp. sci.", "religion", "education", "athletics", "fitness", "business", "music", "life science", "writing"
   ];
-})
+});
