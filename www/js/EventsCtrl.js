@@ -147,27 +147,16 @@ angular.module('awhere.controllers')
       "secondary category": "education",
       "3rd category": ""
     }
-  ];
+    ];
     $scope.filter = $stateParams.category;
-    $scope.events = $scope.events.filter(function(e) {
+    $scope.filterFun = function(e) {
       if (!$scope.filter) {
         return true;
+      } else {
+        var categoryCompare = function(cat, ind, arr) {return cat === $scope.filter};
+        return [e["primary category"], e["secondary category"], e["3rd category"]].some(categoryCompare);
       }
-      else {
-        if ($scope.filter === e["primary category"]) {
-          return true;
-        }
-        else if ($scope.filter === e["secondary category"]) {
-          return true;
-        }
-        else if ($scope.filter === e["3rd category"]) {
-          return true;
-        }
-        else {
-          return false;
-        }
-      }
-    });
+    }
+    $scope.events = $scope.events.filter($scope.filterFun);
   });
-
 });
