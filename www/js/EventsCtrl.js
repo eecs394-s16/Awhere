@@ -156,7 +156,7 @@ angular.module('awhere.controllers')
         var categoryCompare = function(cat, ind, arr) {return cat === $scope.filter};
         return [e["primary category"], e["secondary category"], e["3rd category"]].some(categoryCompare);
       }
-    }
+    };
     $scope.events = $scope.events.filter($scope.filterFun);
   });
 });
