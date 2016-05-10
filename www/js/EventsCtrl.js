@@ -1,11 +1,12 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $stateParams) {
+.controller('EventsCtrl', function($scope, $stateParams, $ionicScrollDelegate) {
 
   $scope.categoryToggle = 0;
 
   $scope.toggle = function (n) {
     $scope.categoryToggle = n
+    $ionicScrollDelegate.scrollTop();
   };
 
   $scope.getCategories = function () {
