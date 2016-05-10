@@ -37,7 +37,7 @@ angular.module('awhere.controllers')
 });
 
 //These will be removed when Database gets implemented.  So i put them at the bottom of the file as globals.
-var testCategories = 
+var testCategories =
 [
   "design", "entrepreneurship", "comp. sci.", "religion", "education", "athletics", "fitness", "business", "music", "life science", "writing"
 ];
