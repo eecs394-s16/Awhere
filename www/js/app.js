@@ -40,26 +40,6 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
         controller: 'EventsCtrl'
       }
     }
-  })
-
-  .state('app.categories', {
-    url: '/categories',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/categories.html',
-        controller: 'CategoriesCtrl'
-      }
-    }
-  })
-
-  .state('app.category', {
-    url: '/categories/:category',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/events.html',
-        controller: 'EventsCtrl'
-      }
-    }
   });
 
   // if none of the above states are matched, use this as the fallback

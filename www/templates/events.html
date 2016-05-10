@@ -1,20 +1,29 @@
 <ion-view view-title="Events">
   <ion-header-bar>
     <div class="button-bar custom-width-bar">
-      <a class="button button-small button-positive button-outline" href="#/app/categories">Categories</a>
-      <a class="button button-small button-positive" ng-class="{'button-outline' : filter}" href="#/app/events">All</a>
+      <a class="button button-small button-positive" ng-class="{'button-outline': categoryToggle !== 1}" ng-click="toggle(1)">Categories</a>
+      <a class="button button-small button-positive" ng-class="{'button-outline': categoryToggle !== 0}" ng-click="toggle(0); filterByCategory(null)">All</a>
     </div>
   </ion-header-bar>
   <ion-content class="has-subheader">
-      <div class="card" ng-repeat="event in events" >
-        <div class="item item-divider">
-          {{event.title}}
+      <div ng-show="categoryToggle === 0">
+        <div class="card" ng-repeat="event in events">
+          <div class="item item-divider">
+            {{event.title}}
+          </div>
+          <div class="item item-text-wrap">
+            <p>Price: {{event.price}}</p>
+            <p>Time: {{event.date}} {{event.time}}</p>
+            <p>Location: {{event.location}}</p>
+          </div>
         </div>
-        <div class="item item-text-wrap">
-          <p>Price: {{event.price}}</p>
-          <p>Time: {{event.date}} {{event.time}}</p>
-          <p>Location: {{event.location}}</p>
-        </div>
+      </div>
+      <div ng-show="categoryToggle === 1">
+        <ion-list>
+          <ion-item ng-repeat="category in categories | orderBy:'toString()'" ng-click="filterByCategory(category); toggle(0)" class="capitalize">
+            {{category}}
+          </ion-item>
+        </ion-list>
       </div>
   </ion-content>
 </ion-view>
