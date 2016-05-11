@@ -27,21 +27,10 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
 
   .state('app', {
     url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.events', {
-    url: '/events',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/events.html',
-        controller: 'EventsCtrl'
-      }
-    }
+    templateUrl: 'templates/events.html',
+    controller: 'EventsCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/events');
+  $urlRouterProvider.otherwise('/app');
 });
