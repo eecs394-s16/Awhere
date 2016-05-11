@@ -1,14 +1,13 @@
 <ion-view view-title="Events">
   <ion-header-bar>
     <div class="button-bar custom-width-bar">
-      <a class="button button-small button-positive" ng-class="{'button-outline': categoryToggle !== 1}" ng-click="toggle(1)">Categories</a>
-      <a class="button button-small button-positive" ng-class="{'button-outline': categoryToggle !== 0}" ng-click="toggle(0); filterByCategory(null)">All</a>
+      <a class="button button-small button-positive" ng-class="{'button-outline': viewState !== viewStateEnum.HOT}" ng-click="toggleView(viewStateEnum.HOT); changeCategory('')">Hot</a>
+      <a class="button button-small button-positive" ng-class="{'button-outline': viewState !== viewStateEnum.CATEGORIES}" ng-click="toggleView(viewStateEnum.CATEGORIES)">Categories</a>
     </div>
   </ion-header-bar>
   <ion-content class="has-subheader">
-      <div ng-show="categoryToggle === 0 || categoryToggle === 2">
-        <ion-list>
-        <div class="card" ng-repeat="event in events" ui-sref="app.card({ind: {{$index}}})">
+      <div ng-show="viewState === viewStateEnum.HOT || viewState === viewStateEnum.CATEGORY">
+        <div class="card" ng-repeat="event in events | filter: categoryFilter" ui-sref="app.card({ind: {{$index}}})">
           <div class="item item-divider">
             {{event.title}}
           </div>
@@ -20,9 +19,9 @@
         </div>
       </ion-list>
       </div>
-      <div ng-show="categoryToggle === 1">
+      <div ng-show="viewState === viewStateEnum.CATEGORIES">
         <ion-list>
-          <ion-item ng-repeat="category in categories | orderBy:'toString()'" ng-click="filterByCategory(category); toggle(2)" class="capitalize">
+          <ion-item ng-repeat="category in categories | orderBy:'toString()'" ng-click="toggleView(viewStateEnum.CATEGORY); changeCategory(category)" class="capitalize">
             {{category}}
           </ion-item>
         </ion-list>

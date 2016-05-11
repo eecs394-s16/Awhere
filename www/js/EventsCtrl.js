@@ -1,43 +1,39 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $stateParams) {
+.controller('EventsCtrl', function($scope, $stateParams, $ionicScrollDelegate) {
 
-  $scope.categoryToggle = 0;
-
-  $scope.toggle = function (n) {
-    $scope.categoryToggle = n
+  $scope.viewStateEnum = {
+    HOT: 0,
+    CATEGORIES: 1,
+    CATEGORY: 2
   };
 
-  $scope.getCategories = function () {
-    //replace this with getting something from the database?
-    return testCategories;
+  $scope.viewState = $scope.viewStateEnum.HOT;
+  $scope.category = '';
+  $scope.events = testEvents;
+  $scope.categories = testCategories;
+
+  $scope.toggleView = function(state) {
+    $scope.viewState = state;
+    $ionicScrollDelegate.scrollTop();
   };
 
-  $scope.categories = $scope.getCategories();
-
-  $scope.getEvents = function() {
-    //also another database get
-    return testEvents;
+  $scope.changeCategory = function(category) {
+    $scope.category = category;
   };
 
-  $scope.events = $scope.getEvents();
-
-  //$scope.events = $scope.events.filter($scope.filterFun);
-  $scope.filterByCategory = function(filterCategory) {
-    var filterFun = function(e) {
-      if (!filterCategory) {
-        return true;
-      } else {
-        var categoryCompare = function(cat, ind, arr) {return cat === filterCategory};
-        return [e["primary category"], e["secondary category"], e["3rd category"]].some(categoryCompare);
-      }
-    };
-    $scope.events = $scope.getEvents().filter(filterFun)
+  $scope.categoryFilter = function(event) {
+    if ($scope.category === '') { return true; }
+    if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
+      return true;
+    } else {
+      return false;
+    }
   };
 });
 
 //These will be removed when Database gets implemented.  So i put them at the bottom of the file as globals.
-var testCategories = 
+var testCategories =
 [
   "design", "entrepreneurship", "comp. sci.", "religion", "education", "athletics", "fitness", "business", "music", "life science", "writing"
 ];
