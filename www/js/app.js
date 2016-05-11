@@ -29,6 +29,12 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
     url: '/app',
     templateUrl: 'templates/events.html',
     controller: 'EventsCtrl'
+  })
+
+  .state('card', {
+    url: '/:ind',
+    templateUrl: 'templates/cardview.html',
+    controller: 'CardCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
