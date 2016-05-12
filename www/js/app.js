@@ -37,9 +37,9 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
     controller: 'CardCtrl'
   })
 
-  .state('profile', {
-    url: '/profile',
-    templateUrl: 'templates/profile.html',
+  .state('preferences', {
+    url: '/preferences',
+    templateUrl: 'templates/preferences.html',
     controller: 'PreferencesCtrl'
   });
 

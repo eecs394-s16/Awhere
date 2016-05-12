@@ -1,0 +1,23 @@
+<ion-view view-title="Preferences">
+  <ion-content>
+
+    <div class="item item-divider">
+      Event Ranking Importance
+    </div>
+    <ion-toggle ng-model="prefs.priceImportant" toggle-class="toggle-calm">Price</ion-toggle>
+    <ion-toggle ng-model="prefs.locationImportant" toggle-class="toggle-calm">Location</ion-toggle>
+    <ion-toggle ng-model="prefs.interestsImportant" toggle-class="toggle-calm">Interests</ion-toggle>
+
+    <div class="item item-divider">
+      Default Categories
+    </div>
+    <ion-checkbox ng-model="prefs.categories.professional">Professional/Future Schooling</ion-checkbox>
+    <ion-checkbox ng-model="prefs.categories.academic">Academic</ion-checkbox>
+    <ion-checkbox ng-model="prefs.categories.athletic">Athletic</ion-checkbox>
+    <ion-checkbox ng-model="prefs.categories.social">Social</ion-checkbox>
+    <ion-checkbox ng-model="prefs.categories.arts">Arts</ion-checkbox>
+    <ion-checkbox ng-model="prefs.categories.other">Other</ion-checkbox>
+
+    <button class="button button-calm" ng-click="savePrefs()">Save</button>
+  </ion-content>
+</ion-view>
