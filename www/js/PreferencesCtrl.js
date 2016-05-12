@@ -16,7 +16,6 @@ angular.module('awhere.controllers')
     $scope.prefs = JSON.parse(loadedVal);
   };
 
-  //Oh god why is this here.
   $scope.categories = [
     {name:          "Professional / Future Schooling", 
      subcategories: ["Graduate School", 
@@ -41,18 +40,18 @@ angular.module('awhere.controllers')
      subcategories:  ["Club Sponsored",
                       "Greek Life Sponsored",
                       "Other"]},
-    {name:            "Other",
-     subcategories:  ["Food",
-                      "philanthropy / service",
-                      "unique"]},
     {name:           "Arts",
      subcategories:  ["Theater",
                       "Music",
                       "Dance",
                       "Comedy",
                       "Film",
-                      "Other"]}
-  ];
+                      "Other"]},
+    {name:            "Other",
+     subcategories:  ["Food",
+                      "philanthropy / service",
+                      "unique"]}
+                        ];
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
