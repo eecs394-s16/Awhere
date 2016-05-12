@@ -32,9 +32,15 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
   })
 
   .state('card', {
-    url: '/:ind',
+    url: '/card/:ind',
     templateUrl: 'templates/cardview.html',
     controller: 'CardCtrl'
+  })
+
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'ProfileCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
