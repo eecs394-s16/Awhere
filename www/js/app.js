@@ -40,7 +40,7 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
   .state('profile', {
     url: '/profile',
     templateUrl: 'templates/profile.html',
-    controller: 'ProfileCtrl'
+    controller: 'PreferencesCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
