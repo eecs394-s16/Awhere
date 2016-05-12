@@ -16,7 +16,24 @@ angular.module('awhere.controllers')
     $scope.prefs = JSON.parse(loadedVal);
   };
 
-  $scope.initPrefs = function() {
-
+  //the following is experimental for accordion menu
+  $scope.categories = []
+  for(var i = 0; i < 5; i++){
+    let myObj = {name: "Category " + i.toString(), subcategories: ["Subcat a", "Subcat b", "Subcat c"]};
+    $scope.categories.push(myObj);
+  }
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleCategory = function(category) {
+    if ($scope.isCategoryShown(category)) {
+      $scope.shownCategory = null;
+    } else {
+      $scope.shownCategory = category;
+    }
+  };
+  $scope.isCategoryShown = function(category) {
+    return $scope.shownCategory === category;
   };
 });
