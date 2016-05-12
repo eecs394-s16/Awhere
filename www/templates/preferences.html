@@ -21,19 +21,18 @@
     <div class="item item-divider">
       Maybe try this instead of the above?
     </div>
+    <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
     <ion-list>
       <div ng-repeat="category in categories">
         <ion-item class="item-stable" ng-click="toggleCategory(category)" ng-class="{active: isCategoryShown(category)}">
           <i class="icon" ng-class="isCategoryShown(category) ? 'ion-minus' : 'ion-plus'"></i>
           {{category.name}}
         </ion-item>
-        <ion-item class="item-accordion" ng-repeat="subcategory in category.subcategories" ng-show="isCategoryShown(category)">
+        <ion-checkbox class="item-accordion" ng-repeat="subcategory in category.subcategories" ng-show="isCategoryShown(category)">
           {{subcategory}}
-        </ion-item>
+        </ion-checkbox>
       </div>
     </ion-list>
-    <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
-
 
     <button class="button button-calm" ng-click="savePrefs()">Save</button>
   </ion-content>

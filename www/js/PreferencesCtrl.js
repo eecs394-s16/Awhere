@@ -16,12 +16,43 @@ angular.module('awhere.controllers')
     $scope.prefs = JSON.parse(loadedVal);
   };
 
-  //the following is experimental for accordion menu
-  $scope.categories = []
-  for(var i = 0; i < 5; i++){
-    let myObj = {name: "Category " + i.toString(), subcategories: ["Subcat a", "Subcat b", "Subcat c"]};
-    $scope.categories.push(myObj);
-  }
+  //Oh god why is this here.
+  $scope.categories = [
+    {name:          "Professional / Future Schooling", 
+     subcategories: ["Graduate School", 
+                     "Career"]},
+    {name:          "Academic", 
+     subcategories: ["Engineering / Design", 
+                     "Math", 
+                     "Sciences", 
+                     "Languages",
+                     "English / Journalism / Lit",
+                     "Music",
+                     "Business / Economics",
+                     "Social Sciences / History",
+                     "Psych / Cog Sci",
+                     "Education and Organization",
+                     "Other"]},
+    {name:           "Athletic",
+     subcategories:  ["Varsity",
+                      "Club",
+                      "Intramural"]},
+    {name:           "Social",
+     subcategories:  ["Club Sponsored",
+                      "Greek Life Sponsored",
+                      "Other"]},
+    {name:            "Other",
+     subcategories:  ["Food",
+                      "philanthropy / service",
+                      "unique"]},
+    {name:           "Arts",
+     subcategories:  ["Theater",
+                      "Music",
+                      "Dance",
+                      "Comedy",
+                      "Film",
+                      "Other"]}
+  ];
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
