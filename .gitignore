@@ -9,7 +9,6 @@ ionic.project
 
 #Mac users
 .DS_Store
-*/.DS_Store
 
 #Vi(m) users
 *.swp
