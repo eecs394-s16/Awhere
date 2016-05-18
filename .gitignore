@@ -7,3 +7,4 @@ plugins/
 ionic.project
 .io-config.json
 .DS_Store
+www/lib/

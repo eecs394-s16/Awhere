@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate) {
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate) {  
 
   $scope.viewStateEnum = {
     HOT: 0,
