@@ -13,13 +13,15 @@
           <div class="item item-text-wrap item-icon-left"><i class="icon ion-ios-navigate-outline"></i>
             <h2>Location: {{ca.location}}</h2>
           </div>
-
+          <div class="item" id="map" data-tap-disabled="true"></div>
+          
           <div class="item item-divider" style="text-align:center">
             Brief Description
           </div>
           <div class="item item-text-warp">
             <h2>{{ca["brief description"]}}</h2>
           </div>
+
           <div class="item item-divider" style="text-align:center">
             Tags
           </div>
@@ -27,6 +29,5 @@
             <h2>{{ca["primary category"]}} {{ca["secondary category"]}} {{ca["3rd category"]}}</h2>
           </div>
         </div>
-    </div>
   </ion-content>
 </ion-view>

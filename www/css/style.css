@@ -37,3 +37,12 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 400px;
+    height: 300px;
+}

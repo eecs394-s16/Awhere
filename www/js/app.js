@@ -4,7 +4,7 @@
 // 'awhere' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'awhere.controllers' is found in controllers.js
-angular.module('awhere', ['ionic', 'awhere.controllers'])
+angular.module('awhere', ['ionic', 'awhere.controllers', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
