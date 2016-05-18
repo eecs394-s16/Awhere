@@ -3,7 +3,7 @@ angular.module('awhere.controllers')
 .controller('PreferencesCtrl', function($scope) {
 
   $scope.prefs = {};
-  $scope.prefs.interest = [];
+  $scope.prefs.interests = [];
 
   $scope.savePrefs = function() {
     console.log($scope.prefs)
@@ -54,7 +54,20 @@ angular.module('awhere.controllers')
                         ];
 
   $scope.stuff = function(cat,subcat) {
-    console.log(cat + ":" + subcat);
+
+    var name = cat + ":" + subcat;
+    var index = $scope.prefs.interests.indexOf(name);
+
+    if (index == -1)
+    {
+      $scope.prefs.interests.push(name);
+    }
+    else
+    {
+      $scope.prefs.interests.splice(index,1);
+    }
+
+    console.log($scope.prefs.interests);
   };
   /*
    * if given group is the selected group, deselect it
