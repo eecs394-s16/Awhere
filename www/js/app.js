@@ -39,8 +39,8 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
 
   .state('presets', {
     url: '/presets',
-    templateUrl: 'templates/presets.html'
-    // controller: 'PresetsCtrl'
+    templateUrl: 'templates/presets.html',
+    controller: 'PresetsCtrl'
   })
 
   .state('preferences', {
