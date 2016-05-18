@@ -37,6 +37,12 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
     controller: 'CardCtrl'
   })
 
+  .state('presets', {
+    url: '/presets',
+    templateUrl: 'templates/presets.html'
+    // controller: 'PresetsCtrl'
+  })
+
   .state('preferences', {
     url: '/preferences',
     templateUrl: 'templates/preferences.html',
