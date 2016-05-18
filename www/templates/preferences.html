@@ -1,15 +1,31 @@
 <ion-view view-title="Preferences">
   <ion-content>
 
+    <label class="item item-input">
+      <span class="input-label">Preference Name:</span>
+      <input type="text" ng-model="prefs.name" placeholder="Preference Name">
+    </label> 
+
     <div class="item item-divider">
       Event Ranking Importance
     </div>
-    <ion-toggle ng-model="prefs.priceImportant" toggle-class="toggle-calm">Price</ion-toggle>
-    <ion-toggle ng-model="prefs.locationImportant" toggle-class="toggle-calm">Location</ion-toggle>
+
+    <div class="item range">
+      <!-- <i class="ion-ios-pricetag"></i> -->
+      <span class="input-label">MAX PRYCE</span>
+      <input type="range" name="Price" min="0" max="100" ng-model="prefs.price">
+      <!-- <i class="ion-ios-pricetags"></i> -->
+    </div>
+    <div class="item range">
+      <!-- <i class="ion-ios-pricetag"></i> -->
+      <span class="input-label">MAX DISTENCE</span>
+      <input type="range" name="Price" min="0" max="100" ng-model="prefs.location">
+      <!-- <i class="ion-ios-pricetags"></i> -->
+    </div>
     <ion-toggle ng-model="prefs.interestsImportant" toggle-class="toggle-calm">Interests</ion-toggle>
 
     <div class="item item-divider">
-      Maybe try this instead of the above?
+      Interests
     </div>
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
     <ion-list>
@@ -28,5 +44,6 @@
     </ion-list>
 
     <button class="button button-calm" ng-click="savePrefs()">Save</button>
+    <button class="button button-calm" ng-click="loadPrefs()">Load</button>
   </ion-content>
 </ion-view>
