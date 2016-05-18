@@ -3,7 +3,7 @@ angular.module('awhere.controllers')
 .controller('PreferencesCtrl', function($scope) {
 
   $scope.prefs = {};
-  $scope.prefs.categories = {};
+  $scope.prefs.interest = [];
 
   $scope.savePrefs = function() {
     console.log($scope.prefs)
@@ -49,9 +49,13 @@ angular.module('awhere.controllers')
                       "Other"]},
     {name:            "Other",
      subcategories:  ["Food",
-                      "philanthropy / service",
-                      "unique"]}
+                      "Philanthropy / Service",
+                      "Unique"]}
                         ];
+
+  $scope.stuff = function(cat,subcat) {
+    console.log(cat + ":" + subcat);
+  };
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
