@@ -4,7 +4,7 @@
 // 'awhere' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'awhere.controllers' is found in controllers.js
-angular.module('awhere', ['ionic', 'awhere.controllers'])
+angular.module('awhere', ['ionic', 'awhere.controllers', 'awhere.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,8 +37,20 @@ angular.module('awhere', ['ionic', 'awhere.controllers'])
     controller: 'CardCtrl'
   })
 
+  .state('presets', {
+    url: '/presets',
+    templateUrl: 'templates/presets.html',
+    controller: 'PresetsCtrl'
+  })
+
+  .state('map', {
+    url: '/map/:location',
+    templateUrl: 'templates/map.html',
+    controller: 'MapCtrl'
+  })
+
   .state('preferences', {
-    url: '/preferences',
+    url: '/preferences/:ind',
     templateUrl: 'templates/preferences.html',
     controller: 'PreferencesCtrl'
   });

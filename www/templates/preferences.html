@@ -1,25 +1,36 @@
 <ion-view view-title="Preferences">
+  <ion-nav-buttons side="right">
+    <button class="button button-positive" ng-click="savePrefs()">
+      Save
+    </button>
+  </ion-nav-buttons>
   <ion-content>
+
+    <label class="item item-input">
+      <span class="input-label">Preference Name:</span>
+      <input type="text" ng-model="prefs.name" placeholder="Preference Name">
+    </label> 
 
     <div class="item item-divider">
       Event Ranking Importance
     </div>
-    <ion-toggle ng-model="prefs.priceImportant" toggle-class="toggle-calm">Price</ion-toggle>
-    <ion-toggle ng-model="prefs.locationImportant" toggle-class="toggle-calm">Location</ion-toggle>
+
+    <div class="item range">
+      <!-- <i class="ion-ios-pricetag"></i> -->
+      <span class="input-label">Cheaper</span>
+      <input type="range" name="Price" min="0" max="100" ng-model="prefs.price">
+      <!-- <i class="ion-ios-pricetags"></i> -->
+    </div>
+    <div class="item range">
+      <!-- <i class="ion-ios-pricetag"></i> -->
+      <span class="input-label">Closer</span>
+      <input type="range" name="Price" min="0" max="100" ng-model="prefs.location">
+      <!-- <i class="ion-ios-pricetags"></i> -->
+    </div>
     <ion-toggle ng-model="prefs.interestsImportant" toggle-class="toggle-calm">Interests</ion-toggle>
 
     <div class="item item-divider">
-      Default Categories
-    </div>
-    <ion-checkbox ng-model="prefs.categories.professional">Professional/Future Schooling</ion-checkbox>
-    <ion-checkbox ng-model="prefs.categories.academic">Academic</ion-checkbox>
-    <ion-checkbox ng-model="prefs.categories.athletic">Athletic</ion-checkbox>
-    <ion-checkbox ng-model="prefs.categories.social">Social</ion-checkbox>
-    <ion-checkbox ng-model="prefs.categories.arts">Arts</ion-checkbox>
-    <ion-checkbox ng-model="prefs.categories.other">Other</ion-checkbox>
-
-    <div class="item item-divider">
-      Maybe try this instead of the above?
+      Interests
     </div>
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
     <ion-list>
@@ -28,12 +39,14 @@
           <i class="icon" ng-class="isCategoryShown(category) ? 'ion-minus' : 'ion-plus'"></i>
           {{category.name}}
         </ion-item>
-        <ion-checkbox class="item-accordion" ng-repeat="subcategory in category.subcategories" ng-show="isCategoryShown(category)">
-          {{subcategory}}
+        <ion-checkbox class="item-accordion" 
+                      ng-repeat="subcategory in category.subcategories" 
+                      ng-show="isCategoryShown(category)" 
+                      ng-click="updateCategories(category.name,subcategory)"
+                      ng-checked="inCategories(category.name,subcategory)">
+          {{subcategory}} {{category.name}}:{{subcategory}}
         </ion-checkbox>
       </div>
     </ion-list>
-
-    <button class="button button-calm" ng-click="savePrefs()">Save</button>
   </ion-content>
 </ion-view>

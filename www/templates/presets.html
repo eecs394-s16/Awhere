@@ -1,0 +1,22 @@
+<ion-view view-title="Presets">
+  <ion-nav-buttons side="right">
+  <button class="button button-balanced" ui-sref="preferences({ind: 'add'})">
+    <i class="icon ion-plus-round"></i>
+  </button>
+</ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <div class="item item-button-right" ng-repeat="preset in presets">
+        {{preset.name}}
+        <div class="buttons">
+        <button class="button button-positive" ng-click="edit()" ui-sref="preferences({ind: {{preset.id}}})">
+          <i class="icon ion-edit"></i>
+        </button>
+        <button class="button button-assertive" ng-click="delete(preset.id)">
+          <i class="icon ion-close-circled"></i>
+        </button>
+      </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
