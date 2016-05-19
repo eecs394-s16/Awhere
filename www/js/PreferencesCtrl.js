@@ -1,25 +1,20 @@
 angular.module('awhere.controllers')
 
-.controller('PreferencesCtrl', function($scope, Preset, $stateParams) {
+.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
 
   $scope.prefs = {};
   $scope.prefs.interests = [];
-  $scope.notAdded = true;
 
   $scope.savePrefs = function() {
-    console.log($scope.prefs)
-
-    if ($stateParams.ind === "add" && $scope.notAdded)
+    if ($stateParams.ind === "add")
     {
       Preset.add($scope.prefs);
-      $scope.notAdded = false;
     }
     else
     {
-      Preset.update($scope.prefs);
+      Preset.update($stateParams.ind, $scope.prefs);
     }
-    // var storeVal = JSON.stringify($scope.prefs);
-    // localStorage.setItem("prefs", storeVal);
+    $state.go("presets");
   };
 
   $scope.loadPrefs = function() {
@@ -111,6 +106,9 @@ angular.module('awhere.controllers')
     return $scope.shownCategory === category;
   };
 
-  if ($stateParams.ind != "add")
-    $scope.loadPrefs();
+  $scope.$on('$ionicView.beforeEnter', function() {
+      if ($stateParams.ind != "add") {
+        $scope.loadPrefs();
+      }
+  });
 });
