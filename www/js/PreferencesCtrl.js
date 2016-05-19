@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('PreferencesCtrl', function($scope) {
+.controller('PreferencesCtrl', function($scope, Preset, $stateParams) {
 
   $scope.prefs = {};
   $scope.prefs.interests = [];
@@ -12,8 +12,9 @@ angular.module('awhere.controllers')
   };
 
   $scope.loadPrefs = function() {
-    var loadedVal = localStorage.getItem("prefs");
-    $scope.prefs = JSON.parse(loadedVal);
+    var loadedVal = Preset.find($stateParams.ind);
+    console.log(loadedVal);
+    $scope.prefs = loadedVal;
 
   };
 
@@ -98,4 +99,5 @@ angular.module('awhere.controllers')
   $scope.isCategoryShown = function(category) {
     return $scope.shownCategory === category;
   };
+  $scope.loadPrefs();
 });
