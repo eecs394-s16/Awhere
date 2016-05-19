@@ -6,5 +6,18 @@ platforms/
 plugins/
 ionic.project
 .io-config.json
+
+#Mac users
 .DS_Store
+
 www/lib/
+
+
+#Vi(m) users
+*.swp
+*.swo
+
+#wtf editors that make <filename>~ files
+*~
+
+
