@@ -1,19 +1,26 @@
 angular.module('awhere.controllers')
 
-.controller('PreferencesCtrl', function($scope) {
-
-  $scope.prefs = {};
-  $scope.prefs.categories = {};
+.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
 
   $scope.savePrefs = function() {
-    console.log($scope.prefs)
-    var storeVal = JSON.stringify($scope.prefs);
-    localStorage.setItem("prefs", storeVal);
+    if ($stateParams.ind === "add")
+    {
+      Preset.add($scope.prefs);
+    }
+    else
+    {
+      Preset.update(Number($stateParams.ind), $scope.prefs);
+    }
+    $state.go("presets");
   };
 
   $scope.loadPrefs = function() {
-    var loadedVal = localStorage.getItem("prefs");
-    $scope.prefs = JSON.parse(loadedVal);
+    var loadedVal = Preset.find(Number($stateParams.ind));
+    if(!loadedVal){
+      $scope.prefs = {interests: []};
+    } else {
+      $scope.prefs = loadedVal;
+    }
   };
 
   $scope.categories = [
@@ -49,9 +56,38 @@ angular.module('awhere.controllers')
                       "Other"]},
     {name:            "Other",
      subcategories:  ["Food",
-                      "philanthropy / service",
-                      "unique"]}
+                      "Philanthropy / Service",
+                      "Unique"]}
                         ];
+
+  $scope.updateCategories = function(cat,subcat) {
+
+    var name = cat + ":" + subcat;
+    var index = $scope.prefs.interests.indexOf(name);
+
+    if (index == -1)
+    {
+      $scope.prefs.interests.push(name);
+    }
+    else
+    {
+      $scope.prefs.interests.splice(index,1);
+    }
+  };
+
+  $scope.inCategories = function(cat,subcat) {
+    var name = cat + ":" + subcat;
+    var index = $scope.prefs.interests.indexOf(name);
+
+    if (index == -1)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  };
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
@@ -66,4 +102,11 @@ angular.module('awhere.controllers')
   $scope.isCategoryShown = function(category) {
     return $scope.shownCategory === category;
   };
+
+  $scope.$on('$ionicView.beforeEnter', function() {
+      $scope.prefs = {interests: []};
+      if ($stateParams.ind != "add") {
+        $scope.loadPrefs();
+      }
+  });
 });

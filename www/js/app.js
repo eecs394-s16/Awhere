@@ -50,7 +50,7 @@ angular.module('awhere', ['ionic', 'awhere.controllers', 'awhere.services', 'ngC
   })
 
   .state('preferences', {
-    url: '/preferences',
+    url: '/preferences/:ind',
     templateUrl: 'templates/preferences.html',
     controller: 'PreferencesCtrl'
   });
