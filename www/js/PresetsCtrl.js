@@ -1,13 +1,10 @@
 angular.module('awhere.controllers')
 
-.controller('PresetsCtrl', function($scope) {
-  $scope.presets = [
-    {name: 'Academic'},
-    {name: 'Social'},
-    {name: 'Athletic'}
-  ];
+.controller('PresetsCtrl', function($scope, Preset) {
+  $scope.presets = Preset.all();
 
-  $scope.delete = function (index) {
-    $scope.presets.splice(index, 1);
+  $scope.delete = function(index) {
+    Preset.delete(index);
+    $scope.presets = Preset.all();
   };
 });
