@@ -16,18 +16,19 @@ angular.module('awhere.controllers')
 
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
     geocoder.geocode({ 'address': $stateParams.location}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
+        if (status == google.maps.GeocoderStatus.OK && results[0].formatted_address.indexOf("Evanston") != -1) {
+          console.log(results[0].formatted_address);
           $scope.map.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
             map: $scope.map,
             position: results[0].geometry.location
           });
         } else {
-          alert ("we couldn't find the location" + status);
+          alert ("we couldn't find the location. Status: " + status);
         }
     });
 
-    var person = 'img/person.png';
+    var person = 'img/currloc.png';
 
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
