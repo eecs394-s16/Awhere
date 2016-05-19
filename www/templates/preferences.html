@@ -37,7 +37,8 @@
         <ion-checkbox class="item-accordion" 
                       ng-repeat="subcategory in category.subcategories" 
                       ng-show="isCategoryShown(category)" 
-                      ng-click="stuff(category.name,subcategory)">
+                      ng-click="stuff(category.name,subcategory)"
+                      ng-checked="morestuff(category.name,subcategory)">
           {{subcategory}} {{category.name}}:{{subcategory}}
         </ion-checkbox>
       </div>

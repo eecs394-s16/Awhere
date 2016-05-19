@@ -14,6 +14,7 @@ angular.module('awhere.controllers')
   $scope.loadPrefs = function() {
     var loadedVal = localStorage.getItem("prefs");
     $scope.prefs = JSON.parse(loadedVal);
+
   };
 
   $scope.categories = [
@@ -68,6 +69,20 @@ angular.module('awhere.controllers')
     }
 
     console.log($scope.prefs.interests);
+  };
+
+  $scope.morestuff = function(cat,subcat) {
+    var name = cat + ":" + subcat;
+    var index = $scope.prefs.interests.indexOf(name);
+
+    if (index == -1)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
   };
   /*
    * if given group is the selected group, deselect it
