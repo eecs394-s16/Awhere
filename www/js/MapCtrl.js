@@ -27,12 +27,15 @@ angular.module('awhere.controllers')
         }
     });
 
+    var person = 'img/person.png';
+
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
       var marker = new google.maps.Marker({
         map: $scope.map,
         animation: google.maps.Animation.DROP,
-        position: latLng
+        position: latLng,
+        icon: person
       });
     });
 
