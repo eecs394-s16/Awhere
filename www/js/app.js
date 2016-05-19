@@ -37,6 +37,12 @@ angular.module('awhere', ['ionic', 'awhere.controllers', 'ngCordova'])
     controller: 'CardCtrl'
   })
 
+  .state('map', {
+    url: '/map/:location',
+    templateUrl: 'templates/map.html',
+    controller: 'MapCtrl'
+  })
+
   .state('preferences', {
     url: '/preferences',
     templateUrl: 'templates/preferences.html',

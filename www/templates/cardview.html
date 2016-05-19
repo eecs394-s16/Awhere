@@ -10,11 +10,9 @@
           <div class="item item-text-wrap item-icon-left"><i class="icon ion-ios-time-outline"></i>
             <h2>Time: {{ca.date}} {{ca.time}}</h2>
           </div>
-          <div class="item item-text-wrap item-icon-left"><i class="icon ion-ios-navigate-outline"></i>
-            <h2>Location: {{ca.location}}</h2>
+          <div class="item item-text-wrap item-icon-left" ui-sref="map({location: '{{ca.location}}'})"><i class="icon ion-ios-navigate-outline"></i>
+            <h2 class="location">Location: {{ca.location}}</h2>
           </div>
-          <div class="item" id="map" data-tap-disabled="true"></div>
-          
           <div class="item item-divider" style="text-align:center">
             Brief Description
           </div>
