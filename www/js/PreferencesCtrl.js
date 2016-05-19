@@ -4,11 +4,22 @@ angular.module('awhere.controllers')
 
   $scope.prefs = {};
   $scope.prefs.interests = [];
+  $scope.notAdded = true;
 
   $scope.savePrefs = function() {
     console.log($scope.prefs)
-    var storeVal = JSON.stringify($scope.prefs);
-    localStorage.setItem("prefs", storeVal);
+
+    if ($stateParams.ind === "add" && $scope.notAdded)
+    {
+      Preset.add($scope.prefs);
+      $scope.notAdded = false;
+    }
+    else
+    {
+      Preset.update($scope.prefs);
+    }
+    // var storeVal = JSON.stringify($scope.prefs);
+    // localStorage.setItem("prefs", storeVal);
   };
 
   $scope.loadPrefs = function() {
@@ -99,5 +110,7 @@ angular.module('awhere.controllers')
   $scope.isCategoryShown = function(category) {
     return $scope.shownCategory === category;
   };
-  $scope.loadPrefs();
+
+  if ($stateParams.ind != "add")
+    $scope.loadPrefs();
 });

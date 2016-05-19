@@ -3,6 +3,9 @@ angular.module('awhere.services')
 .factory('Preset', function() {
   var presets = JSON.parse(localStorage.getItem('presets'));
 
+  if (!presets)
+    presets = []
+
   var updateLocalStorage = function() {
     localStorage.setItem('presets', JSON.stringify(presets));
   };
