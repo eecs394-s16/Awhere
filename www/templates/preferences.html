@@ -1,4 +1,9 @@
 <ion-view view-title="Preferences">
+  <ion-nav-buttons side="right">
+    <button class="button button-positive" ng-click="savePrefs()">
+      Save
+    </button>
+  </ion-nav-buttons>
   <ion-content>
 
     <label class="item item-input">
@@ -12,13 +17,13 @@
 
     <div class="item range">
       <!-- <i class="ion-ios-pricetag"></i> -->
-      <span class="input-label">MAX PRYCE</span>
+      <span class="input-label">Cheaper</span>
       <input type="range" name="Price" min="0" max="100" ng-model="prefs.price">
       <!-- <i class="ion-ios-pricetags"></i> -->
     </div>
     <div class="item range">
       <!-- <i class="ion-ios-pricetag"></i> -->
-      <span class="input-label">MAX DISTENCE</span>
+      <span class="input-label">Closer</span>
       <input type="range" name="Price" min="0" max="100" ng-model="prefs.location">
       <!-- <i class="ion-ios-pricetags"></i> -->
     </div>
@@ -37,14 +42,11 @@
         <ion-checkbox class="item-accordion" 
                       ng-repeat="subcategory in category.subcategories" 
                       ng-show="isCategoryShown(category)" 
-                      ng-click="stuff(category.name,subcategory)"
-                      ng-checked="morestuff(category.name,subcategory)">
+                      ng-click="updateCategories(category.name,subcategory)"
+                      ng-checked="inCategories(category.name,subcategory)">
           {{subcategory}} {{category.name}}:{{subcategory}}
         </ion-checkbox>
       </div>
     </ion-list>
-
-    <button class="button button-calm" ng-click="savePrefs()">Save</button>
-    <button class="button button-calm" ng-click="loadPrefs()">Load</button>
   </ion-content>
 </ion-view>

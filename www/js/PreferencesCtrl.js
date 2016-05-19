@@ -2,9 +2,6 @@ angular.module('awhere.controllers')
 
 .controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
 
-  $scope.prefs = {};
-  $scope.prefs.interests = [];
-
   $scope.savePrefs = function() {
     if ($stateParams.ind === "add")
     {
@@ -12,16 +9,18 @@ angular.module('awhere.controllers')
     }
     else
     {
-      Preset.update($stateParams.ind, $scope.prefs);
+      Preset.update(Number($stateParams.ind), $scope.prefs);
     }
     $state.go("presets");
   };
 
   $scope.loadPrefs = function() {
-    var loadedVal = Preset.find($stateParams.ind);
-    console.log(loadedVal);
-    $scope.prefs = loadedVal;
-
+    var loadedVal = Preset.find(Number($stateParams.ind));
+    if(!loadedVal){
+      $scope.prefs = {interests: []};
+    } else {
+      $scope.prefs = loadedVal;
+    }
   };
 
   $scope.categories = [
@@ -61,7 +60,7 @@ angular.module('awhere.controllers')
                       "Unique"]}
                         ];
 
-  $scope.stuff = function(cat,subcat) {
+  $scope.updateCategories = function(cat,subcat) {
 
     var name = cat + ":" + subcat;
     var index = $scope.prefs.interests.indexOf(name);
@@ -74,11 +73,9 @@ angular.module('awhere.controllers')
     {
       $scope.prefs.interests.splice(index,1);
     }
-
-    console.log($scope.prefs.interests);
   };
 
-  $scope.morestuff = function(cat,subcat) {
+  $scope.inCategories = function(cat,subcat) {
     var name = cat + ":" + subcat;
     var index = $scope.prefs.interests.indexOf(name);
 
@@ -107,6 +104,7 @@ angular.module('awhere.controllers')
   };
 
   $scope.$on('$ionicView.beforeEnter', function() {
+      $scope.prefs = {interests: []};
       if ($stateParams.ind != "add") {
         $scope.loadPrefs();
       }
