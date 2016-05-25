@@ -24,7 +24,7 @@ angular.module('awhere.controllers')
             position: results[0].geometry.location
           });
         } else {
-          alert ("we couldn't find the location. Status: " + status);
+          //alert ("we couldn't find the location. Status: " + status);
         }
     });
 
