@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate) {  
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate,Preset) {  
 
   $scope.viewStateEnum = {
     HOT: 0,
@@ -12,6 +12,8 @@ angular.module('awhere.controllers')
   $scope.category = '';
   $scope.events = testEvents;
   $scope.categories = testCategories;
+
+  $scope.currentPreset = Preset.find(JSON.parse(localStorage.getItem('currPreset')));
 
   $scope.toggleView = function(state) {
     $scope.viewState = state;
