@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate) {  
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate,Preset) {  
 
   $scope.viewStateEnum = {
     HOT: 0,
@@ -13,6 +13,8 @@ angular.module('awhere.controllers')
   $scope.events = testEvents;
   $scope.categories = testCategories;
 
+  $scope.currentPreset = Preset.find(JSON.parse(localStorage.getItem('currPreset')));
+
   $scope.toggleView = function(state) {
     $scope.viewState = state;
     $ionicScrollDelegate.scrollTop();
@@ -23,6 +25,15 @@ angular.module('awhere.controllers')
   };
 
   $scope.categoryFilter = function(event) {
+
+    if ($scope.currentPreset)
+    {
+      if (event['price'].indexOf("Free") != -1 || parseInt(event['price']) <= parseInt($scope.currentPreset.price))
+        return true;
+      else
+        return false;
+    }
+
     if ($scope.category === '') { return true; }
     if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
       return true;
@@ -30,6 +41,14 @@ angular.module('awhere.controllers')
       return false;
     }
   };
+
+  $scope.printPrice = function(price) {
+    if (price.indexOf("Free") != -1)
+      return "Free";
+    else
+      return "$" + price;
+  }
+
 });
 
 //These will be removed when Database gets implemented.  So i put them at the bottom of the file as globals.
@@ -109,7 +128,7 @@ var testEvents =
   {
     "title": "BodyPump!",
     "date": "4/11/2016",
-    "price": "$18",
+    "price": "18",
     "location": "SPAC",
     "time": "6:15 - 7:15 am",
     "brief description": "barbell class",
@@ -131,7 +150,7 @@ var testEvents =
   {
     "title": "Bell Up!",
     "date": "4/12/2016",
-    "price": "$10",
+    "price": "10",
     "location": "SPAC",
     "time": "7:30 - 9 pm",
     "brief description": "intermediate belly dancing",
@@ -153,7 +172,7 @@ var testEvents =
   {
     "title": "Harmonica 101",
     "date": "4/13/2016",
-    "price": "$5",
+    "price": "5",
     "location": "Norris",
     "time": "8:00 PM",
     "brief description": "learn the harmonica",
