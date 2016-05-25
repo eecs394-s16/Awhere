@@ -30,7 +30,14 @@ angular.module('awhere.controllers')
     if ($scope.currentPreset)
     {
       var foundCategory = false;
-      if ($scope.currentPreset.interests.length == 0) {return true};
+      if ($scope.currentPreset.interests.length == 0) {
+        if (event['price'].indexOf("Free") != -1 || parseInt(event['price']) <= parseInt($scope.currentPreset.price)) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      };
 
       for (var i = 0; i < $scope.currentPreset.interests.length; i++){
         $scope.category = $scope.currentPreset.interests[i];
