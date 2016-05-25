@@ -1,6 +1,17 @@
 angular.module('awhere.controllers')
 
-.controller('CardCtrl', function($scope, $stateParams) {
+.controller('CardCtrl', function($scope, $stateParams, $cordovaSocialSharing) {
+
+  $scope.shareAnywhere = function() {
+    $cordovaSocialSharing
+      .shareViaFacebook('Hi, check out ' + $scope.ca.title +' at '+ $scope.ca.location+ ' on '+ $scope.ca.time, '', '')
+      .then(function(result) {
+      // Success!
+      }, function(err) {
+        alert (err);
+      // An error occurred. Show a message to the user
+      });
+    }
 
   $scope.cid = $stateParams.ind;
 
@@ -85,7 +96,7 @@ var testEvents =
   {
     "title": "BodyPump!",
     "date": "4/11/2016",
-    "price": "$18",
+    "price": "18",
     "location": "SPAC",
     "time": "6:15 - 7:15 am",
     "brief description": "barbell class",
@@ -107,7 +118,7 @@ var testEvents =
   {
     "title": "Bell Up!",
     "date": "4/12/2016",
-    "price": "$10",
+    "price": "10",
     "location": "SPAC",
     "time": "7:30 - 9 pm",
     "brief description": "intermediate belly dancing",
@@ -129,7 +140,7 @@ var testEvents =
   {
     "title": "Harmonica 101",
     "date": "4/13/2016",
-    "price": "$5",
+    "price": "5",
     "location": "Norris",
     "time": "8:00 PM",
     "brief description": "learn the harmonica",
