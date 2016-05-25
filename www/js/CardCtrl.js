@@ -24,7 +24,8 @@ var testEvents =
     "brief description": "how can thinking wrong be so right?",
     "primary category": "design",
     "secondary category": "entrepreneurship",
-    "3rd category": ""
+    "3rd category": "",
+    "img": "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg"
   },
   {
     "title": "Hack Nights",
