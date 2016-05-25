@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset) {  
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset) {
 
   $scope.viewStateEnum = {
     HOT: 0,
@@ -52,7 +52,7 @@ angular.module('awhere.controllers')
       console.log("There is no preset");
       return true;
     }
-    
+
   };
 
   $scope.printPrice = function(price) {
@@ -82,7 +82,8 @@ var testEvents =
     "brief description": "how can thinking wrong be so right?",
     "primary category": "Academic:Engineering / Design",
     "secondary category": "Academic:Business / Economics",
-    "3rd category": ""
+    "3rd category": "",
+    "img": "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg"
   },
   {
     "title": "Hack Nights",
