@@ -2,6 +2,7 @@ angular.module('awhere.services')
 
 .factory('Preset', function() {
   var presets = JSON.parse(localStorage.getItem('presets'));
+  var currentPreset = JSON.parse(localStorage.getItem('currPreset'))
   console.log(presets);
 
   if (!presets)
@@ -9,6 +10,7 @@ angular.module('awhere.services')
 
   var updateLocalStorage = function() {
     localStorage.setItem('presets', JSON.stringify(presets));
+    localStorage.setItem('currPreset', JSON.stringify(currentPreset));
   };
 
   return {
@@ -51,6 +53,19 @@ angular.module('awhere.services')
           return;
         }
       } 
+    },
+    getCurrent: function(){
+      for(var i=0; i<presets.length; i++){
+        if(presets[i].id === currentPreset){
+          return presets[i];
+        }
+        console.log("Panic! Current preset not found (Is it null?)");
+      };
+      return null;
+    },
+    setCurrent: function(id){
+      currentPreset = id;
+      updateLocalStorage();
     }
   };
 });
