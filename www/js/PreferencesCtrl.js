@@ -62,9 +62,17 @@ angular.module('awhere.controllers')
                       "Unique"]}
                         ];
 
-  $scope.updateCategories = function(cat,subcat) {
+  $scope.updateCategories = function(cat,subcat,interest=null) {
 
-    var name = cat + ":" + subcat;
+    var name;
+    if (!interest) {
+      name = cat + ":" + subcat;
+    }
+    else {
+      name = interest;
+    }
+
+
     var index = $scope.prefs.interests.indexOf(name);
 
     if (index == -1)
@@ -77,8 +85,16 @@ angular.module('awhere.controllers')
     }
   };
 
-  $scope.inCategories = function(cat,subcat) {
-    var name = cat + ":" + subcat;
+  $scope.inCategories = function(cat,subcat,interest=null) {
+
+    var name;
+    if (!interest) {
+      name = cat + ":" + subcat;
+    }
+    else {
+      name = interest;
+    }
+
     var index = $scope.prefs.interests.indexOf(name);
 
     if (index == -1)
@@ -90,6 +106,7 @@ angular.module('awhere.controllers')
       return true;
     }
   };
+
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
