@@ -34,6 +34,17 @@
     </div>
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
     
+    <div class="item">Selected interests
+
+    <div ng-repeat="interest in prefs.interests">
+      <ion-checkbox ng-click="updateCategories(null,null,interest)"
+                    ng-checked="inCategories(null,null,interest)">
+        {{ interest }}
+      </ion-checkbox>
+    </div>
+    </div>
+
+
     <label class="item item-input">
       <input ng-model="searchText" type="text" placeholder="Search for Interests">
     </label>
