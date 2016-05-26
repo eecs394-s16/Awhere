@@ -23,6 +23,8 @@ angular.module('awhere.controllers')
     }
   };
 
+  $scope.searchText = "";
+
   $scope.categories = [
     {name:          "Professional / Future Schooling", 
      subcategories: ["Graduate School", 

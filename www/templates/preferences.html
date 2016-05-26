@@ -35,8 +35,19 @@
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
     
     <label class="item item-input">
-      <input type="text" placeholder="Search for Interests">
+      <input ng-model="searchText" type="text" placeholder="Search for Interests">
     </label>
+
+    <ion-list>
+      <div ng-repeat="category in categories">
+        <ion-checkbox ng-repeat="subcategory in category.subcategories | filter: searchText"
+                      ng-show="searchText" 
+                      ng-click="updateCategories(category.name,subcategory)"
+                      ng-checked="inCategories(category.name,subcategory)">
+          {{subcategory}}
+        </ion-checkbox>            
+      </div>
+    </ion-list>
 
     <ion-list>
       <div ng-repeat="category in categories">
@@ -49,7 +60,7 @@
                       ng-show="isCategoryShown(category)" 
                       ng-click="updateCategories(category.name,subcategory)"
                       ng-checked="inCategories(category.name,subcategory)">
-          {{subcategory}} {{category.name}}:{{subcategory}}
+          {{subcategory}}
         </ion-checkbox>
       </div>
     </ion-list>
