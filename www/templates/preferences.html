@@ -33,6 +33,11 @@
       Interests
     </div>
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
+    
+    <label class="item item-input">
+      <input type="text" placeholder="Search for Interests">
+    </label>
+
     <ion-list>
       <div ng-repeat="category in categories">
         <ion-item class="item-stable" ng-click="toggleCategory(category)" ng-class="{active: isCategoryShown(category)}">
