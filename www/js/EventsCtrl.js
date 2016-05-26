@@ -16,7 +16,7 @@ angular.module('awhere.controllers')
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.currentPreset = Preset.getCurrent();
     console.log($scope.currentPreset);
-  }
+  });
 
   $scope.toggleView = function(state) {
     $scope.viewState = state;
