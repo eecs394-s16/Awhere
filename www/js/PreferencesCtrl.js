@@ -62,7 +62,7 @@ angular.module('awhere.controllers')
                       "Unique"]}
                         ];
 
-  $scope.updateCategories = function(cat,subcat,interest=null) {
+  $scope.updateCategories = function(cat,subcat,interest) {
 
     var name;
     if (!interest) {
@@ -85,7 +85,7 @@ angular.module('awhere.controllers')
     }
   };
 
-  $scope.inCategories = function(cat,subcat,interest=null) {
+  $scope.inCategories = function(cat,subcat,interest) {
 
     var name;
     if (!interest) {
