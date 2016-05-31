@@ -13,8 +13,10 @@ angular.module('awhere.controllers')
   $scope.events = testEvents;
   $scope.categories = testCategories;
 
-  $scope.currentPreset = Preset.find(JSON.parse(localStorage.getItem('currPreset')));
-  console.log($scope.currentPreset);
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.currentPreset = Preset.getCurrent();
+    console.log($scope.currentPreset);
+  });
 
   $scope.toggleView = function(state) {
     $scope.viewState = state;
@@ -41,9 +43,9 @@ angular.module('awhere.controllers')
 
       for (var i = 0; i < $scope.currentPreset.interests.length; i++){
         $scope.category = $scope.currentPreset.interests[i];
-        if (event['title'] === "Segal Seminar Series: John Bielenberg"){
-          console.log(event['primary category'], $scope.category);
-        }
+        // if (event['title'] === "Segal Seminar Series: John Bielenberg"){
+        //   console.log(event['primary category'], $scope.category);
+        // }
 
         if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
           if (event['price'].indexOf("Free") != -1 || parseInt(event['price']) <= parseInt($scope.currentPreset.price)) {
