@@ -27,12 +27,39 @@
       <input type="range" name="Price" min="0" max="100" ng-model="prefs.location">
       <!-- <i class="ion-ios-pricetags"></i> -->
     </div>
-    <ion-toggle ng-model="prefs.interestsImportant" toggle-class="toggle-calm">Interests</ion-toggle>
 
     <div class="item item-divider">
       Interests
     </div>
     <!--Accordion menu from https://codepen.io/ionic/pen/uJkCz -->
+    
+    <div class="item">Selected interests
+
+    <div ng-repeat="interest in prefs.interests">
+      <ion-checkbox ng-click="updateCategories(null,null,interest)"
+                    ng-checked="inCategories(null,null,interest)">
+        {{ interest }}
+      </ion-checkbox>
+    </div>
+    </div>
+
+
+    <label class="item item-input">
+      <input ng-model="searchText" type="text" placeholder="Search for Interests">
+    </label>
+
+    <ion-list>
+      <div ng-repeat="category in categories">
+        <ion-checkbox ng-repeat="subcategory in category.subcategories | filter: searchText"
+                      ng-show="searchText" 
+                      ng-click="updateCategories(category.name,subcategory)"
+                      ng-checked="inCategories(category.name,subcategory)"
+                      class="accordion-checkbox">
+          {{ category.name }}:{{subcategory}}
+        </ion-checkbox>            
+      </div>
+    </ion-list>
+
     <ion-list>
       <div ng-repeat="category in categories">
         <ion-item class="item-stable" ng-click="toggleCategory(category)" ng-class="{active: isCategoryShown(category)}">
@@ -44,7 +71,7 @@
                       ng-show="isCategoryShown(category)" 
                       ng-click="updateCategories(category.name,subcategory)"
                       ng-checked="inCategories(category.name,subcategory)">
-          {{subcategory}} {{category.name}}:{{subcategory}}
+          {{subcategory}}
         </ion-checkbox>
       </div>
     </ion-list>
