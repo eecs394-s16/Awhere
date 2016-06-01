@@ -16,7 +16,7 @@ angular.module('awhere.controllers')
 
   $scope.selectPreset = function(preset) {
     $scope.currPreset = preset.id;
-    localStorage.setItem('currPreset', JSON.stringify($scope.currPreset));
+    Preset.setCurrent($scope.currPreset);
   };
 
 
