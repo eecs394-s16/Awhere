@@ -27,7 +27,18 @@ angular.module('awhere.controllers')
     $scope.category = category;
   };
 
-  $scope.categoryFilter = function(event) {
+  $scope.eventFilter = function(event) {
+
+    if ($scope.viewState === $scope.viewStateEnum.CATEGORY) {
+      if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
+        return true;
+      }
+      // Hot filtering - for now just returns all events
+      if ($scope.category == "Hot")
+        return true;
+      
+      return false;
+    }
 
     if ($scope.currentPreset)
     {
@@ -77,7 +88,7 @@ angular.module('awhere.controllers')
 var testCategories =
 [
   "Academic:Engineering / Design", "Academic:Business / Economics", "Academic:Sciences", "Other:Unique", "Academic:Education and Organization",
-   "Athletic:Varsity", "Athletic:Club", "Arts:Music", "Academic:English / Journalism / Lit"
+   "Athletic:Varsity", "Athletic:Club", "Arts:Music", "Academic:English / Journalism / Lit","Hot"
 ];
 
 var testEvents =
