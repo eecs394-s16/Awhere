@@ -60,7 +60,7 @@ angular.module('awhere.services')
           return presets[i];
         }
         console.log("Panic! Current preset not found (Is it null?)");
-      };
+      }
       return null;
     },
     setCurrent: function(id){
