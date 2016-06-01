@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
+.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state, Category) {
 
   $scope.savePrefs = function() {
     if ($stateParams.ind === "add")
@@ -25,42 +25,7 @@ angular.module('awhere.controllers')
 
   $scope.searchText = "";
 
-  $scope.categories = [
-    {name:          "Professional / Future Schooling", 
-     subcategories: ["Graduate School", 
-                     "Career"]},
-    {name:          "Academic", 
-     subcategories: ["Engineering / Design", 
-                     "Math", 
-                     "Sciences", 
-                     "Languages",
-                     "English / Journalism / Lit",
-                     "Music",
-                     "Business / Economics",
-                     "Social Sciences / History",
-                     "Psych / Cog Sci",
-                     "Education and Organization",
-                     "Other"]},
-    {name:           "Athletic",
-     subcategories:  ["Varsity",
-                      "Club",
-                      "Intramural"]},
-    {name:           "Social",
-     subcategories:  ["Club Sponsored",
-                      "Greek Life Sponsored",
-                      "Other"]},
-    {name:           "Arts",
-     subcategories:  ["Theater",
-                      "Music",
-                      "Dance",
-                      "Comedy",
-                      "Film",
-                      "Other"]},
-    {name:            "Other",
-     subcategories:  ["Food",
-                      "Philanthropy / Service",
-                      "Unique"]}
-                        ];
+  $scope.categories = Category.all();
 
   $scope.updateCategories = function(cat,subcat,interest) {
 
