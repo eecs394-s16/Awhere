@@ -3,6 +3,10 @@ angular.module('awhere.controllers')
 .controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
 
   $scope.savePrefs = function() {
+    if ($scope.prefs.name == null) {
+      alert("Must give preset a name");
+      return;
+    }
     if ($stateParams.ind === "add")
     {
       Preset.add($scope.prefs);
@@ -26,13 +30,13 @@ angular.module('awhere.controllers')
   $scope.searchText = "";
 
   $scope.categories = [
-    {name:          "Professional / Future Schooling", 
-     subcategories: ["Graduate School", 
+    {name:          "Professional / Future Schooling",
+     subcategories: ["Graduate School",
                      "Career"]},
-    {name:          "Academic", 
-     subcategories: ["Engineering / Design", 
-                     "Math", 
-                     "Sciences", 
+    {name:          "Academic",
+     subcategories: ["Engineering / Design",
+                     "Math",
+                     "Sciences",
                      "Languages",
                      "English / Journalism / Lit",
                      "Music",
