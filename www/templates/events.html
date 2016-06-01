@@ -26,7 +26,7 @@
       </div>
       <div ng-show="viewState === viewStateEnum.CATEGORIES">
         <ion-list>
-          <ion-item ng-click="toggleView(viewStateEnum.CATEGORY); changeCategory(category)" class="capitalize">
+          <ion-item ng-click="toggleView(viewStateEnum.CATEGORY); changeCategory('Hot')" class="capitalize">
           Hot
           </ion-item>
           <ion-item ng-repeat="category in categories | orderBy:'toString()'" ng-click="toggleView(viewStateEnum.CATEGORY); changeCategory(category)" class="capitalize">
