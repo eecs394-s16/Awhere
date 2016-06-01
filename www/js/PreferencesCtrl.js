@@ -3,6 +3,10 @@ angular.module('awhere.controllers')
 .controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state, Category) {
 
   $scope.savePrefs = function() {
+    if ($scope.prefs.name == null) {
+      alert("Must give preset a name");
+      return;
+    }
     if ($stateParams.ind === "add")
     {
       Preset.add($scope.prefs);
