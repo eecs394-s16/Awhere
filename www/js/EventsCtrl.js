@@ -27,7 +27,7 @@ angular.module('awhere.controllers')
     $scope.category = category;
   };
 
-  $scope.categoryFilter = function(event) {
+  $scope.eventFilter = function(event) {
 
     if ($scope.currentPreset)
     {
