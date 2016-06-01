@@ -29,6 +29,13 @@ angular.module('awhere.controllers')
 
   $scope.eventFilter = function(event) {
 
+    if ($scope.viewState === $scope.viewStateEnum.CATEGORY) {
+      if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
+        return true;
+      }
+      return false;
+    }
+
     if ($scope.currentPreset)
     {
       var foundCategory = false;
