@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset) {
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset, Category) {
 
   $scope.viewStateEnum = {
     HOT: 0,
@@ -11,7 +11,7 @@ angular.module('awhere.controllers')
   $scope.viewState = $scope.viewStateEnum.HOT;
   $scope.category = '';
   $scope.events = testEvents;
-  $scope.categories = testCategories;
+  $scope.categories = Category.concatAll();
 
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.currentPreset = Preset.getCurrent();
