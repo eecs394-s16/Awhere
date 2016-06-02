@@ -1,8 +1,15 @@
 angular.module('awhere.controllers')
 
-.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state) {
+.controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state, Category) {
 
   $scope.savePrefs = function() {
+    if (!$scope.prefs.price)
+      $scope.prefs.price = 50;
+    
+    if ($scope.prefs.name == null) {
+      alert("Must give preset a name");
+      return;
+    }
     if ($stateParams.ind === "add")
     {
       Preset.add($scope.prefs);
@@ -23,46 +30,21 @@ angular.module('awhere.controllers')
     }
   };
 
-  $scope.categories = [
-    {name:          "Professional / Future Schooling", 
-     subcategories: ["Graduate School", 
-                     "Career"]},
-    {name:          "Academic", 
-     subcategories: ["Engineering / Design", 
-                     "Math", 
-                     "Sciences", 
-                     "Languages",
-                     "English / Journalism / Lit",
-                     "Music",
-                     "Business / Economics",
-                     "Social Sciences / History",
-                     "Psych / Cog Sci",
-                     "Education and Organization",
-                     "Other"]},
-    {name:           "Athletic",
-     subcategories:  ["Varsity",
-                      "Club",
-                      "Intramural"]},
-    {name:           "Social",
-     subcategories:  ["Club Sponsored",
-                      "Greek Life Sponsored",
-                      "Other"]},
-    {name:           "Arts",
-     subcategories:  ["Theater",
-                      "Music",
-                      "Dance",
-                      "Comedy",
-                      "Film",
-                      "Other"]},
-    {name:            "Other",
-     subcategories:  ["Food",
-                      "Philanthropy / Service",
-                      "Unique"]}
-                        ];
+  $scope.searchText = "";
 
-  $scope.updateCategories = function(cat,subcat) {
+  $scope.categories = Category.all();
 
-    var name = cat + ":" + subcat;
+  $scope.updateCategories = function(cat,subcat,interest) {
+
+    var name;
+    if (!interest) {
+      name = cat + ":" + subcat;
+    }
+    else {
+      name = interest;
+    }
+
+
     var index = $scope.prefs.interests.indexOf(name);
 
     if (index == -1)
@@ -75,8 +57,16 @@ angular.module('awhere.controllers')
     }
   };
 
-  $scope.inCategories = function(cat,subcat) {
-    var name = cat + ":" + subcat;
+  $scope.inCategories = function(cat,subcat,interest) {
+
+    var name;
+    if (!interest) {
+      name = cat + ":" + subcat;
+    }
+    else {
+      name = interest;
+    }
+
     var index = $scope.prefs.interests.indexOf(name);
 
     if (index == -1)
@@ -88,6 +78,7 @@ angular.module('awhere.controllers')
       return true;
     }
   };
+
   /*
    * if given group is the selected group, deselect it
    * else, select the given group

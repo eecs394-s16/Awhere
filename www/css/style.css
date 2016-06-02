@@ -51,3 +51,19 @@
   color: blue;
   text-decoration: underline;
 }
+
+.accordion-checkbox {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+
+.accordion-checkbox.ng-hide {
+  line-height: 0px;
+}
+
+.accordion-checkbox.ng-hide-add,
+.accordion-checkbox.ng-hide-show {
+  display: block !important;
+}

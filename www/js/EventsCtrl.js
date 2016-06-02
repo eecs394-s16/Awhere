@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset) {
+.controller('EventsCtrl', function($scope, $ionicScrollDelegate, Preset, Category) {
 
   $scope.viewStateEnum = {
     HOT: 0,
@@ -11,10 +11,11 @@ angular.module('awhere.controllers')
   $scope.viewState = $scope.viewStateEnum.HOT;
   $scope.category = '';
   $scope.events = testEvents;
-  $scope.categories = testCategories;
+  $scope.categories = Category.concatAll();
 
-  $scope.currentPreset = Preset.find(JSON.parse(localStorage.getItem('currPreset')));
-  console.log($scope.currentPreset);
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.currentPreset = Preset.getCurrent();
+  });
 
   $scope.toggleView = function(state) {
     $scope.viewState = state;
@@ -25,7 +26,18 @@ angular.module('awhere.controllers')
     $scope.category = category;
   };
 
-  $scope.categoryFilter = function(event) {
+  $scope.eventFilter = function(event) {
+
+    if ($scope.viewState === $scope.viewStateEnum.CATEGORY) {
+      if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
+        return true;
+      }
+      // Hot filtering - for now just returns all events
+      if ($scope.category == "Hot")
+        return true;
+      
+      return false;
+    }
 
     if ($scope.currentPreset)
     {
@@ -41,14 +53,10 @@ angular.module('awhere.controllers')
 
       for (var i = 0; i < $scope.currentPreset.interests.length; i++){
         $scope.category = $scope.currentPreset.interests[i];
-        if (event['title'] === "Segal Seminar Series: John Bielenberg"){
-          console.log(event['primary category'], $scope.category);
-        }
 
         if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
           if (event['price'].indexOf("Free") != -1 || parseInt(event['price']) <= parseInt($scope.currentPreset.price)) {
             foundCategory = true;
-            console.log("found category");
             break;
           }
         }
@@ -56,7 +64,6 @@ angular.module('awhere.controllers')
       return foundCategory;
     }
     else {
-      console.log("There is no preset");
       return true;
     }
 
@@ -75,14 +82,14 @@ angular.module('awhere.controllers')
 var testCategories =
 [
   "Academic:Engineering / Design", "Academic:Business / Economics", "Academic:Sciences", "Other:Unique", "Academic:Education and Organization",
-   "Athletic:Varsity", "Athletic:Club", "Arts:Music", "Academic:English / Journalism / Lit"
+   "Athletic:Varsity", "Athletic:Club", "Arts:Music", "Academic:English / Journalism / Lit","Hot"
 ];
 
 var testEvents =
 [
   {
     "title": "Segal Seminar Series: John Bielenberg",
-    "date": "4/12/2016",
+    "date": "6/12/2016",
     "price": "Free",
     "location": "Ford Design Studio 1.230",
     "time": "4-5 pm",
@@ -94,7 +101,7 @@ var testEvents =
   },
   {
     "title": "Hack Nights",
-    "date": "4/13/2016",
+    "date": "6/13/2016",
     "price": "Free",
     "location": "the garage",
     "time": "7-10pm",
@@ -105,7 +112,7 @@ var testEvents =
   },
   {
     "title": "Design Chicago",
-    "date": "4/6/2016",
+    "date": "6/6/2016",
     "price": "Free",
     "location": "Allen Center",
     "time": "4-6:30 pm",
@@ -115,8 +122,8 @@ var testEvents =
     "3rd category": ""
   },
   {
-    "title": "\"Unicorn\"",
-    "date": "4/7/2016",
+    "title": "Unicorn",
+    "date": "6/7/2016",
     "price": "Free",
     "location": "Jacobs Center",
     "time": "5:15-8:15 pm",
@@ -126,8 +133,8 @@ var testEvents =
     "3rd category": ""
   },
   {
-    "title": "\"The Master's Hand\"",
-    "date": "4/13/2016",
+    "title": "The Master's Hand",
+    "date": "6/13/2016",
     "price": "Free",
     "location": "Harris Hall 107",
     "time": "4:00 PM",
@@ -138,10 +145,10 @@ var testEvents =
   },
   {
     "title": "NU vs INDIANA women's tennis",
-    "date": "4/10/2016",
+    "date": "6/10/2016",
     "price": "Free w/ card",
     "location": "South Tennis Courts",
-    "time": "11/2/2016",
+    "time": "4-6 pm",
     "brief description": "women's tennis",
     "primary category": "Athletic:Varsity",
     "secondary category": "",
@@ -149,7 +156,7 @@ var testEvents =
   },
   {
     "title": "BodyPump!",
-    "date": "4/11/2016",
+    "date": "6/11/2016",
     "price": "18",
     "location": "SPAC",
     "time": "6:15 - 7:15 am",
@@ -160,7 +167,7 @@ var testEvents =
   },
   {
     "title": "Workshop in industrial organization",
-    "date": "4/11/2016",
+    "date": "6/11/2016",
     "price": "Free",
     "location": "Jacobs Center",
     "time": "3:30 - 5 pm",
@@ -171,7 +178,7 @@ var testEvents =
   },
   {
     "title": "Bell Up!",
-    "date": "4/12/2016",
+    "date": "6/12/2016",
     "price": "10",
     "location": "SPAC",
     "time": "7:30 - 9 pm",
@@ -182,7 +189,7 @@ var testEvents =
   },
   {
     "title": "Daily Mass",
-    "date": "4/13/2016",
+    "date": "6/13/2016",
     "price": "Free",
     "location": "Sheil",
     "time": "5 -  6 pm",
@@ -193,7 +200,7 @@ var testEvents =
   },
   {
     "title": "Harmonica 101",
-    "date": "4/13/2016",
+    "date": "6/13/2016",
     "price": "5",
     "location": "Norris",
     "time": "8:00 PM",
@@ -204,7 +211,7 @@ var testEvents =
   },
   {
     "title": "Neurobiology Club Intro meeting",
-    "date": "4/14/0216",
+    "date": "6/14/0216",
     "price": "Free",
     "location": "2220 campus dr",
     "time": "12 - 1 pm",
@@ -215,7 +222,7 @@ var testEvents =
   },
   {
     "title": "Judith Kimble",
-    "date": "4/14/2016",
+    "date": "6/14/2016",
     "price": "Free",
     "location": "Pancoe",
     "time": "1-2 pm",
