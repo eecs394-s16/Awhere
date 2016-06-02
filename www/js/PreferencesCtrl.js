@@ -3,6 +3,9 @@ angular.module('awhere.controllers')
 .controller('PreferencesCtrl', function($scope, Preset, $stateParams, $state, Category) {
 
   $scope.savePrefs = function() {
+    if (!$scope.prefs.price)
+      $scope.prefs.price = 50;
+    
     if ($scope.prefs.name == null) {
       alert("Must give preset a name");
       return;
