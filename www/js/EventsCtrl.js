@@ -154,7 +154,7 @@ var testEvents =
     "date": "6/10/2016",
     "price": "Free w/ card",
     "location": "South Tennis Courts",
-    "time": "11/2/2016",
+    "time": "4-6 pm",
     "brief description": "women's tennis",
     "primary category": "Athletic:Varsity",
     "secondary category": "",
