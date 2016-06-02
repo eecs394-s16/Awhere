@@ -12,7 +12,7 @@
   </ion-header-bar>
   <ion-content class="has-subheader">
       <div ng-show="viewState === viewStateEnum.HOT || viewState === viewStateEnum.CATEGORY">
-        <div class="card" ng-repeat="event in events | filter: eventFilter" ui-sref="card({ind: {{$index}}})">
+        <div class="card" ng-repeat="event in events | filter: eventFilter" ui-sref='card({ind: "{{event.title}}"})'>
           <div class="item item-divider">
             {{event.title}}
           </div>

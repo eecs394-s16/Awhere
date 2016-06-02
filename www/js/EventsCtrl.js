@@ -15,7 +15,6 @@ angular.module('awhere.controllers')
 
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.currentPreset = Preset.getCurrent();
-    console.log($scope.currentPreset);
   });
 
   $scope.toggleView = function(state) {
@@ -54,14 +53,10 @@ angular.module('awhere.controllers')
 
       for (var i = 0; i < $scope.currentPreset.interests.length; i++){
         $scope.category = $scope.currentPreset.interests[i];
-        // if (event['title'] === "Segal Seminar Series: John Bielenberg"){
-        //   console.log(event['primary category'], $scope.category);
-        // }
 
         if ([event['primary category'], event['secondary category'], event['3rd category']].indexOf($scope.category) > -1) {
           if (event['price'].indexOf("Free") != -1 || parseInt(event['price']) <= parseInt($scope.currentPreset.price)) {
             foundCategory = true;
-            console.log("found category");
             break;
           }
         }
@@ -69,7 +64,6 @@ angular.module('awhere.controllers')
       return foundCategory;
     }
     else {
-      console.log("There is no preset");
       return true;
     }
 
@@ -128,7 +122,7 @@ var testEvents =
     "3rd category": ""
   },
   {
-    "title": "\"Unicorn\"",
+    "title": "Unicorn",
     "date": "6/7/2016",
     "price": "Free",
     "location": "Jacobs Center",
@@ -139,7 +133,7 @@ var testEvents =
     "3rd category": ""
   },
   {
-    "title": "\"The Master's Hand\"",
+    "title": "The Master's Hand",
     "date": "6/13/2016",
     "price": "Free",
     "location": "Harris Hall 107",
