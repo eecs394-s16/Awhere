@@ -9,8 +9,16 @@ npm install -g cordova ionic
 *Note this requires npm, so if you do not have Node installed, navigate to [the Node.js site](https://nodejs.org/en/)  
 For more information on installing Ionic, [look here](http://ionicframework.com/getting-started/).
 
-If Ionic installs successfully, you now need to install a few dependecies.  
-To do this, run  
+To download the repository, clone it by running
+```
+git clone https://github.com/eecs394-s16/Awhere.git
+```
+Then move in to the directory using
+```
+cd Awhere
+```
+
+Now you need to install a few dependencies. To do this, run  
 ```
 npm install
 ```  
@@ -19,11 +27,6 @@ After this, you will need to install/update bower. You can do this by running
 ```
 bower install
 ```  
-You may need to run  
-```
-bower update
-```  
-as well.
 
 In order to restore functionality to the Maps feature for Events, you must obtain a Google Maps API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key#key), and put it in www/index.html at line 24
 
