@@ -14,6 +14,14 @@ angular.module('awhere.controllers')
     }
 
   $scope.cid = $stateParams.ind;
+  $scope.ca = {};
 
-  $scope.ca = testEvents[$scope.cid];
+  for (var i=0; i < testEvents.length; i++)
+  {
+    if ($scope.cid===testEvents[i].title)
+    {
+      $scope.ca = testEvents[i];
+      break;
+    }
+  }
 });

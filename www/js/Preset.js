@@ -3,7 +3,6 @@ angular.module('awhere.services')
 .factory('Preset', function() {
   var presets = JSON.parse(localStorage.getItem('presets'));
   var currentPreset = JSON.parse(localStorage.getItem('currPreset'))
-  console.log(presets);
 
   if (!presets)
     presets = []
