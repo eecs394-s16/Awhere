@@ -25,7 +25,7 @@ bower update
 ```  
 as well.
 
-In order to restore functionality to the Maps feature for Events, you must obtain a Google Maps API key from [here](https://developers.google.com/maps/documentation/javascript/get-api-key#key), and put it in www/index.html at line 24
+In order to restore functionality to the Maps feature for Events, you must obtain a Google Maps API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key#key), and put it in www/index.html at line 24
 
 
 ### Testing, Uploading, and Building
@@ -43,6 +43,17 @@ Finally, run
 ionic upload
 ```  
 from the app directory on your command line, and enter your login information if prompted. Now, once you open IonicView on your mobile device, you should see your app listed.
+
+Another way to test is to run the app on an emulator. To do this (for iOS, for example), first set up Ionic to build for the device:
+```
+ionic platform ios
+```
+
+Next, run the following commands (note: XCode is required to use the iOS emulator successfully): 
+```
+ionic build ios  
+ionic emulate ios  
+```
 
 When the time comes you want to build the app for publishing to either the App Store or Google Play, follow the instructions [here to do so](http://ionicframework.com/docs/guide/publishing.html).
 
