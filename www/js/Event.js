@@ -39,7 +39,7 @@ angular.module('awhere.services')
     "3rd category": ""
   },
   {
-    "title": "\"Unicorn\"",
+    "title": "\'Unicorn\'",
     "date": "6/7/2016",
     "price": "Free",
     "location": "Jacobs Center",
@@ -50,7 +50,7 @@ angular.module('awhere.services')
     "3rd category": ""
   },
   {
-    "title": "\"The Master's Hand\"",
+    "title": "\'The Master's Hand\'",
     "date": "6/13/2016",
     "price": "Free",
     "location": "Harris Hall 107",
