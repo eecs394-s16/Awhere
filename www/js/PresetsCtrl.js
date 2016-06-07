@@ -5,7 +5,6 @@ angular.module('awhere.controllers')
 
   $scope.$on('$ionicView.beforeEnter', function() {
       $scope.currPreset = JSON.parse(localStorage.getItem('currPreset'));
-      console.log($scope.currPreset);
   });
   
 

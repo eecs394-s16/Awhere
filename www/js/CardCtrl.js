@@ -1,6 +1,6 @@
 angular.module('awhere.controllers')
 
-.controller('CardCtrl', function($scope, $stateParams, $cordovaSocialSharing) {
+.controller('CardCtrl', function($scope, $stateParams, $cordovaSocialSharing, Event) {
 
   $scope.shareAnywhere = function() {
     $cordovaSocialSharing
@@ -16,11 +16,12 @@ angular.module('awhere.controllers')
   $scope.cid = $stateParams.ind;
   $scope.ca = {};
 
-  for (var i=0; i < testEvents.length; i++)
+  var events = Event.all();
+  for (var i=0; i < events.length; i++)
   {
-    if ($scope.cid===testEvents[i].title)
+    if ($scope.cid===events[i].title)
     {
-      $scope.ca = testEvents[i];
+      $scope.ca = events[i];
       break;
     }
   }
